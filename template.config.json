@@ -24,7 +24,7 @@
   "ticket": {
     "scripts": "channel id to send the scripts",
     "categ": "category id to make the tickets in",
-    "ping": "role id to ping when ticker created"
+    "modrole": "role id to give access to the chanel when ticket created"
   },
   "server": "server id to be used for setting slash commands"
 }

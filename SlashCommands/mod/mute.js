@@ -40,7 +40,7 @@ module.exports = {
     const ea = new MessageEmbed()
       .setTitle("You have been muted in CT LMAO")
       .setDescription(
-        `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.tag}]\n**Reason** - \`${r}\``
+        `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.username}]\n**Reason** - \`${r}\``
       );
     u.timeout(ms(timeAdded), r);
     u.send({ embeds: [ea] });

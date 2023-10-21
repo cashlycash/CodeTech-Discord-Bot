@@ -6,7 +6,7 @@ module.exports = {
     const emb = new MessageEmbed()
       .setTitle(`Confirmation`)
       .setDescription(
-        "Are you sure you wanna open a ticket? This will send a notification to all the online admins in the discord server and make a new channel just for your conversation with the admins. Please don't instantly close your ticket after making."
+        "Are you sure you wanna open a ticket? This will send make a new channel just for your conversation with the admins.\n**Please don't instantly close your ticket after making.**"
       )
       .setColor("RED");
 

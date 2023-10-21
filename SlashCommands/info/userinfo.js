@@ -20,7 +20,7 @@ module.exports = {
 
     const focusActivity = activities.find((x) => x.assets);
     const embed = new MessageEmbed()
-      .setAuthor(member.user.tag, member.user.displayAvatarURL())
+      .setAuthor(member.user.username, member.user.displayAvatarURL())
       .setColor(
         member.displayHexColor === "#000000"
           ? "#ffffff"

@@ -25,7 +25,7 @@ module.exports = {
           VIEW_CHANNEL: true,
         });
         c.permissionOverwrites.create(client.user.id, { VIEW_CHANNEL: true });
-        c.permissionOverwrites.create(client.config.ticket.ping, {
+        c.permissionOverwrites.create(client.config.ticket.modrole, {
           VIEW_CHANNEL: true,
         });
         c.permissionOverwrites.create(everyoneRole.id, {
@@ -33,9 +33,9 @@ module.exports = {
         });
 
         const emb = new MessageEmbed()
-          .setTitle(`Hey! ${interaction.user.tag}`)
+          .setTitle(`Hey! ${interaction.user.username}`)
           .setDescription(
-            "Please do not ping the staff they have already been pinged"
+            "Please do not ping the staff. We will get to you as soon as possible."
           )
           .setColor("BLURPLE");
 
@@ -47,7 +47,7 @@ module.exports = {
         );
 
         c.send({
-          content: `@here | <@${interaction.user.id}>`,
+          content: `<@${interaction.user.id}>`,
           embeds: [emb],
           components: [btn],
         });

@@ -31,7 +31,7 @@ module.exports = {
         `
       **Name** : ${guild.name}
       **Server ID** : ${guild.id}
-      **Owner** : ${await guild.fetchOwner().then((m) => m.user.tag)}
+      **Owner** : ${await guild.fetchOwner().then((m) => m.user.username)}
       **Total Members** : ${guild.memberCount} [${User} Users | ${Bots} Bots]
       **Total Emojis** : ${Emoji}
       **Total Roles** : ${Roles}
