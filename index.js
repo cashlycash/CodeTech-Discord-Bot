@@ -47,5 +47,5 @@ require("./handler")(client);
 module.exports = client;
 
 console.log("Logging in...")
-console.log(`Token: \"${process.env.TOKEN}\"`)
-client.login(process.env.TOKEN);
+console.log(`Token: \"${process.env.token}\"`)
+client.login(process.env.token);
