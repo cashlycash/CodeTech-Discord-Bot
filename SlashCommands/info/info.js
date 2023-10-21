@@ -11,29 +11,45 @@ module.exports = {
       .addFields(
         {
           name: "Developer",
-          value: "Arnav Gupta | 9E (<@!908554250945183744>)",
+          value: "CashlyCash (<@!1056591132739506248>)",
           inline: true,
         },
         {
-          name: "Creation time",
+          name: "GitHub Repository",
+          value: "https://github.com/cashlycash/CodeTech-Discord-Bot",
+          inline: true,
+        },
+        {
+          name: "First version launched",
           value: "<t:1659467762:R>",
           inline: true,
-        }
+        },
+        {
+          name: "Last updated",
+          value: "<t:1697910869:R>",
+          inline: true,
+        },
       )
       .setColor("BLURPLE")
       .setTimestamp()
       .setFooter({
-        text: "Special thanks to Aryan and Samridh to allow Arnav to code this <3",
+        text: "Made with love by CashlyCash",
         iconURL: client.user.avatarURL(),
       });
 
     const row = new MessageActionRow().setComponents(
       new MessageButton()
-        .setLabel("Talk to my daddy")
+        .setLabel("Chat With Developer")
         .setStyle("LINK")
         .setURL(
-          "https://discord.com/channels/1004104875522666578/1009473661381652552"
-        )
+          "https://discord.com/users/1056591132739506248"
+        ),
+      new MessageButton()
+        .setLabel("GitHub Repository")
+        .setStyle("LINK")
+        .setURL(
+          "https://github.com/cashlycash/CodeTech-Discord-Bot"
+        ),
     );
     interaction.followUp({ embeds: [emb], components: [row] });
   },
