@@ -21,6 +21,7 @@
     "_NOTE_": "denote the number with :no:"
   },
   "ticket": {
+    "hostedurl": "https://ct-bot-088h.onrender.com",
     "scripts": "1120400768822939648",
     "categ": "1120400835042611311",
     "modrole": "1107550268159184906"

@@ -40,13 +40,15 @@ module.exports = {
         content: `Ticket of <@!${au}>`,
         files: [att],
       }).then((msg) => {
-        link = `https://support.spectral.host/?url=${
+        link = `${client.config.ticket.hostedurl}/ticket?url=${
           msg.attachments.first().url
         }`;
-        const emb = new MessageEmbed()
-          .setTitle("Ticket Transcript")
-          .setURL(link)
-          .setDescription(`**URL -** ${link}`);
+        const row = new MessageActionRow().addComponents(
+          new MessageButton()
+            .setLabel("View Transcript")
+            .setStyle("LINK")
+            .setURL(link)
+        );
         msg.edit({ embeds: [emb] });
       });
     }

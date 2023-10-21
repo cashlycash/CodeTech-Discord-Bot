@@ -22,6 +22,7 @@
     "_NOTE_": "denote the number with :no:"
   },
   "ticket": {
+    "hostedurl": "URL (along with protocol) of the hosted web interface of this discord bot without ending with slash",
     "scripts": "channel id to send the scripts",
     "categ": "category id to make the tickets in",
     "modrole": "role id to give access to the chanel when ticket created"
