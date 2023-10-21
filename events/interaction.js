@@ -46,7 +46,7 @@ client.on("modalSubmit", async (interaction) => {
       .setTimestamp()
       .setTitle(`${name} | ${clas}-${sec}, Welcome to ${member.guild.name}!`)
       .setDescription(
-        `Collect roles from <#${client.config.verify.channels.eventroles}> to get access to respective event updates. Incase of any queries use <#${client.config.verify.channels.ticket}>.`
+        `Collect roles from <#${client.config.verify.channels.selfroles}>. Incase of any queries use <#${client.config.verify.channels.ticket}>.`
       )
       .setThumbnail(await interaction.member.user.avatarURL({ dynamic: true }))
       .setFooter({
