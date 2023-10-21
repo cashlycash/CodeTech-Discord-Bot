@@ -2,8 +2,7 @@ const { Client, Collection } = require("discord.js");
 const Nuggies = require("nuggies");
 const discordModals = require("discord-modals");
 
-// uncomment if .env is not being detected
-// require("dotenv").config();
+require("dotenv").config();
 
 const client = new Client({
   intents: [
