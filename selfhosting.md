@@ -1,7 +1,7 @@
 # Self hosting the bot
 In order to self host the bot, you need to learn some important stuff
 ## Private Commands (Only admins)
-### !verify
+### !verifypanel
 This will make a verification portal
 ### !tktpanel
 This will make a ticket portal
@@ -18,4 +18,4 @@ This will allow you to complile any nodejs code direct from the bot (message var
 ## config.json
 IN config.json most of the values are the ids but there can be others too. Use common sense for it.
 ## Hosting
-I say use replit, heroku (about to die), or any host which allows nodejs applications
+I say use replit, heroku (about to die), or any host which allows nodejs applications. I personally use render.com for it
