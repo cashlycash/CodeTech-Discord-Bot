@@ -1,25 +1,26 @@
 {
   "prefix": "!",
   "verify": {
-    "panelurl": "https://discord.com/channels/1004104875522666578/1004112419410423809/1009463580120326144",
-    "channel": "1004104876516704387",
+    "panelurl": "",
+    "channel": "",
     "channels": {
-      "eventroles": "1004112957619327126",
-      "ticket": "1009473661381652552"
+      "eventroles": "",
+      "ticket": ""
     },
-    "roles": ["1004107626377904229", "1004108479969103965"]
+    "roles": ["", ""]
   },
   "leave": {
-    "channel": "1004104876516704387"
+    "channel": ""
   },
   "count": {
-    "channel": "1009463264276664320",
-    "format": "Members: :no:"
+    "channel": "",
+    "format": "Members: :no:",
+    "_NOTE_": "denote the number with :no:"
   },
   "ticket": {
-    "scripts": "1009474300006375614",
-    "categ": "1009474337365053563",
-    "ping": "1004104875522666579"
+    "scripts": "",
+    "categ": "",
+    "ping": ""
   },
-  "server": "1004104875522666578"
+  "server": ""
 }
