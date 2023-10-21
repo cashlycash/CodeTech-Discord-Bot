@@ -1,7 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const Nuggies = require("nuggies");
 const discordModals = require("discord-modals");
-const logs = require("discord-logs");
 
 require("dotenv").config();
 
@@ -33,9 +32,6 @@ process.on("unhandledRejection", (error) => {
 });
 
 discordModals(client);
-logs(client, {
-  debug: false,
-});
 Nuggies.handleInteractions(client);
 
 client.ctbully = [];
@@ -49,4 +45,4 @@ require("./handler")(client);
 
 module.exports = client;
 
-client.login("MTAwNDEwNTMxNjgwMTE4Mzc3NQ.G3IjgY.p3e8_Gd4X59c346kRMGDaCqUa0OkSLx2Z2Qc9g");
+client.login(process.env.TOKEN);
