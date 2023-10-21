@@ -1,5 +1,9 @@
 {
   "prefix": "!",
+  "botadmins": [
+    "userid",
+    "userid"
+  ],
   "verify": {
     "panelurl": "Message link of the verify panel",
     "channel": "Channel ID of the gateway message",

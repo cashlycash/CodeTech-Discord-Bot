@@ -14,7 +14,7 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    const whitelist = ["908554250945183744"];
+    const whitelist = client.config.botadmins;
 
     const user = interaction.options.getMember("user");
 

@@ -1,9 +1,9 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const owners = ["908554250945183744"];
 
 module.exports = {
   name: "br",
   run: (client, message, args) => {
+    var owners = client.config.botadmins;
     if (!owners.includes(message.author.id)) {
       return message.channel.send("Limited To The Bot Owner Only!");
     }
