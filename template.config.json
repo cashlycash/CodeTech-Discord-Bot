@@ -1,26 +1,26 @@
 {
   "prefix": "!",
   "verify": {
-    "panelurl": "",
-    "channel": "",
+    "panelurl": "Message link of the verify panel",
+    "channel": "Channel ID of the gateway message",
     "channels": {
-      "eventroles": "",
-      "ticket": ""
+      "selfroles": "self roles channel id",
+      "ticket": "ticket channel id"
     },
-    "roles": ["", ""]
+    "roles": ["role id to be given on join", "role id to be given on join"]
   },
   "leave": {
-    "channel": ""
+    "channel": "Channel ID of the gateway message"
   },
   "count": {
-    "channel": "",
+    "channel": "Channel ID to update the member count",
     "format": "Members: :no:",
     "_NOTE_": "denote the number with :no:"
   },
   "ticket": {
-    "scripts": "",
-    "categ": "",
-    "ping": ""
+    "scripts": "channel id to send the scripts",
+    "categ": "category id to make the tickets in",
+    "ping": "role id to ping when ticker created"
   },
-  "server": ""
+  "server": "server id to be used for setting slash commands"
 }
