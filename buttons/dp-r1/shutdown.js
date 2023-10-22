@@ -20,7 +20,6 @@ module.exports = {
     client.user.setPresence(dat);
 
     setTimeout(async () => {
-      await client.destroy();
       process.exit();
     }, 1000);
   },
