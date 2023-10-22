@@ -3,6 +3,8 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports = {
   name: "reactroles",
   aliases: ["rr"],
+  usage: "<title> <role id> <role id> ... (upto 25 roles)",
+  description: "Make a panel with buttons to give and take roles",
   UserPerms: ["ADMINISTRATOR"],
   run: (client, message, args) => {
     const emb = new MessageEmbed()

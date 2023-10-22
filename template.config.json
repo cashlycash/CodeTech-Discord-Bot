@@ -4,6 +4,7 @@
     "userid",
     "userid"
   ],
+  "randomlink": "A random link that will be used in embed titles",
   "verify": {
     "panelurl": "Message link of the verify panel",
     "channel": "Channel ID of the gateway message",

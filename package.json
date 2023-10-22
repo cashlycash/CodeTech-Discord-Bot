@@ -1,7 +1,7 @@
 {
-  "name": "binary",
-  "version": "1.0.0",
-  "description": "",
+  "name": "codetech-discord-bot",
+  "version": "69.420.0",
+  "description": "This is a Discord Bot for BVN CodeTech's intra-school server.",
   "main": "index.js",
   "scripts": {
     "start": "node .",

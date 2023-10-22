@@ -4,6 +4,7 @@ const Nuggies = require("nuggies");
 module.exports = {
   name: "reactrolesplus",
   aliases: ["rrp"],
+  description: "Create a reaction role menu with advanced options",
   UserPerms: ["ADMINISTRATOR"],
   run: async (client, message, args, Discord) => {
     var owners = client.config.botadmins;

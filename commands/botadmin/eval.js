@@ -2,6 +2,9 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "eval",
+  aliases: ["e"],
+  description: "Evaluate a awaited JS code on the bot",
+  usage: "<code in JS code block>",
   run: async (client, message, args) => {
     var owners = client.config.botadmins;
     if (!owners.includes(message.author.id)) {
@@ -13,7 +16,7 @@ module.exports = {
         return message.channel.send("What do you want to evaluate?");
       }
 
-      let evaled = eval(code);
+      let evaled = await eval(code);
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 

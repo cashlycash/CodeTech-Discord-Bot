@@ -2,6 +2,7 @@ const { MessageActionRow, MessageEmbed, MessageButton } = require("discord.js");
 
 module.exports = {
   name: "tktpanel",
+  aliases: ["tp"],
   description: "Make a ticket panel",
   run: async (client, message) => {
 

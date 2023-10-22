@@ -3,6 +3,8 @@ const ms = require("ms");
 module.exports = {
   name: "russianroulette",
   aliases: ["gol", "roulette", "grr"],
+  description: "Play russian roulette where the unlucky one gets muted",
+  usage: "<time> <@user> <@user> ...",
   UserPerms: ["ADMINISTRATOR"],
   run: async (client, message, args) => {
     var pps = message.mentions.members;

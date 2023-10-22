@@ -6,6 +6,9 @@ const {
 
 module.exports = {
 	name: 'steal',
+  aliases: ['addemoji'],
+  description: 'Steal emoji from another server',
+  usage : '<emoji> <name>',
   UserPerms: ["MANAGE_EMOJIS_AND_STICKERS"],
 	run: async (client, message, args, Discord) => {
     if (args.length == 0){

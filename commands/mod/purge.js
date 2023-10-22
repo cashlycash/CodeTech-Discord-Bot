@@ -2,6 +2,7 @@ module.exports = {
   name: 'purge',
   aliases: ['clear', 'clean'],
   description: 'Clears the type, amount of message',
+  usage: '<amount/infinity>',
   UserPerms: ["MANAGE_MESSAGES"],
   run: async (client, message, args, Discord) => {
     message.delete()

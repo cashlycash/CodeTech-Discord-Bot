@@ -3,6 +3,8 @@ const owners = ["908554250945183744"];
 
 module.exports = {
   name: "verifypanel",
+  aliases: ["vp"],
+  description: "Make a panel with button to verify a user",
   run: (client, message, args) => {
 
     if (!message.member.permissions.has('MANAGE_GUILD')){
