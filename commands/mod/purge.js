@@ -3,7 +3,6 @@ module.exports = {
   aliases: ['clear', 'clean'],
   description: 'Clears the type, amount of message',
   UserPerms: ["MANAGE_MESSAGES"],
-  BotPerms: ["MANAGE_MESSAGES"],
   run: async (client, message, args, Discord) => {
     message.delete()
     if (!args[0]) {

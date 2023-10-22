@@ -3,11 +3,8 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports = {
   name: "reactroles",
   aliases: ["rr"],
+  UserPerms: ["ADMINISTRATOR"],
   run: (client, message, args) => {
-    var owners = client.config.botadmins;
-    if (!owners.includes(message.author.id)) {
-      return message.channel.send("Limited To The Bot Admins Only!");
-    }
     const emb = new MessageEmbed()
       .setTitle(args[0] + " Roles")
       .setColor("#6600ff")
@@ -16,8 +13,8 @@ module.exports = {
       );
 
     let buttons = [];
-
-    args.forEach((a) => {
+    
+    args.slice(1).forEach((a) => {
       const r = message.guild.roles.cache.get(a);
       buttons.push(
         new MessageButton()

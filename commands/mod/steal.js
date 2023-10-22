@@ -6,7 +6,7 @@ const {
 
 module.exports = {
 	name: 'steal',
-  UserPerms: ["MANAGE_GUILD"],
+  UserPerms: ["MANAGE_EMOJIS_AND_STICKERS"],
 	run: async (client, message, args, Discord) => {
     if (args.length == 0){
       return message.reply(`__Format : __\`${client.config.prefix}steal emoji new_name\``)

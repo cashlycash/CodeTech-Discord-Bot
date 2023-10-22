@@ -4,11 +4,7 @@ const Nuggies = require("nuggies");
 module.exports = {
   name: "reactrolesplus",
   aliases: ["rrp"],
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
+  UserPerms: ["ADMINISTRATOR"],
   run: async (client, message, args, Discord) => {
     var owners = client.config.botadmins;
     if (!owners.includes(message.author.id)) {
