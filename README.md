@@ -11,7 +11,7 @@ This is a Discord Bot for the [`BVN CodeTech`](https://github.com/BVNCodeTech)'s
 ### Vote Command
 The logic for vote command has been put in [`vote-logic.js`](https://github.com/cashlycash/CodeTech-Discord-Bot/blob/main/vote-logic.js) please view it and read all comments for better understanding
 ### config.json
-The main reason I used [`config.json`](https://github.com/cashlycash/CodeTech-Discord-Bot/blob/main/config.json) is so that incase we need to use this bot in a new server, I won't need to go to every file in code and change stuff. I can just change in config.json and rehost it (will save time) + people who want to use this bot in there own server can do so easily as well
+The main reason I used [`config.json`](https://github.com/cashlycash/CodeTech-Discord-Bot/blob/main/template.config.json) is so that incase we need to use this bot in a new server, I won't need to go to every file in code and change stuff. I can just change in config.json and rehost it (will save time) + people who want to use this bot in there own server can do so easily as well
 ## Self hosting
 If you want to use this bot in your server then please visit [`selfhosting.md`](https://github.com/cashlycash/CodeTech-Discord-Bot/blob/main/selfhosting.md)
 ## Inspired code 
