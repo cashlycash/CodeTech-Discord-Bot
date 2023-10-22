@@ -1,6 +1,5 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
-const { Client } = require("discord.js");
 const globPromise = promisify(glob);
 
 module.exports = async (client) => {
@@ -50,7 +49,7 @@ module.exports = async (client) => {
   eventfiles.map((value) => require(value));
 
   //Button Handler
-  const btnsf = await globPromise(`${process.cwd()}/buttons/*.js`);
+  const btnsf = await globPromise(`${process.cwd()}/buttons/**/*.js`);
   btnsf.map((value) => {
     const file = require(value);
     if (!file?.id) return;
@@ -61,4 +60,5 @@ module.exports = async (client) => {
       client.btns.get(interaction.customId)?.run(client, interaction);
     }
   });
+  
 };

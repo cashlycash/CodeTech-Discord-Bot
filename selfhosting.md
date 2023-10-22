@@ -7,6 +7,8 @@ You want to copy `template.env` onto `.env` and modify the token there. Not need
 ## Hosting
 I say use replit, heroku (about to die), or any host which allows nodejs web applications. I personally use render.com for it
 ## Private Commands (Only admins)
+### !debugpanel
+This will open a debug panel which will allow you to fix the bot if it is not working properly
 ### !verifypanel
 This will make a verification portal
 ### !tktpanel
