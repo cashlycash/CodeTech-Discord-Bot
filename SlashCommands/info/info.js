@@ -3,7 +3,7 @@ const ms = require("ms");
 
 module.exports = {
   name: "botinfo",
-  description: "Info about the bot",
+  description: "Information about the bot",
   run: async (client, interaction) => {
     const emb = new MessageEmbed()
       .setTitle("Bot info")

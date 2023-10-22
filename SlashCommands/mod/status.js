@@ -7,7 +7,7 @@ const db = require("quick.db");
 module.exports = {
   ephemeral: true,
   name: "status",
-  description: "OWNER ONLY!",
+  description: "Set the bot's status!",
   options: [
     {
       type: 3,

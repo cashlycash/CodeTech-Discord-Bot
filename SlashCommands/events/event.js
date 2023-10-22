@@ -9,7 +9,7 @@ const db = require(`quick.db`)
 
 module.exports = {
   name: "events",
-  description: "events",
+  description: "Fetch all active events",
   run: async (client, interaction) => {
     
 		const events = db.get('events')

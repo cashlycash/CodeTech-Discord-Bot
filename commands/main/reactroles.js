@@ -1,17 +1,18 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
-  name: "br",
+  name: "reactroles",
+  aliases: ["rr"],
   run: (client, message, args) => {
     var owners = client.config.botadmins;
     if (!owners.includes(message.author.id)) {
-      return message.channel.send("Limited To The Bot Owner Only!");
+      return message.channel.send("Limited To The Bot Admins Only!");
     }
     const emb = new MessageEmbed()
-      .setTitle("Event roles")
+      .setTitle(args[0] + " Roles")
       .setColor("#6600ff")
       .setDescription(
-        "Click the button bellow to according to the event you want to recive information about"
+        "Click the button below to get the role, click again to remove it"
       );
 
     let buttons = [];

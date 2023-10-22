@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "serverinfo",
-  description: "Fetch servers information",
+  description: "Fetch server information",
   run: async (client, interaction) => {
     const guild = interaction.guild;
     const User = guild.members.cache.filter((member) => !member.user.bot).size;

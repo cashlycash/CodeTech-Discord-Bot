@@ -5,7 +5,7 @@ module.exports = {
   run: async (client, message, args) => {
     var owners = client.config.botadmins;
     if (!owners.includes(message.author.id)) {
-      return message.channel.send("Limited To The Bot Owner Only!");
+      return message.channel.send("Limited To The Bot Admins Only!");
     }
     try {
       const code = args.join(" ").slice(6).slice(0, -3);

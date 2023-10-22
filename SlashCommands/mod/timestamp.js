@@ -4,7 +4,7 @@ const ms = require("ms");
 module.exports = {
   ephemeral: true,
   name: "timestamp",
-  description: "make a timestamp",
+  description: "Make a discord timestamp",
   options: [
     {
       type: 3,

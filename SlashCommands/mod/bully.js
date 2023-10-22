@@ -4,7 +4,7 @@ const ms = require("ms");
 
 module.exports = {
   name: "bully",
-  description: "bully kids",
+  description: "Bully kids like I do",
   options: [
     {
       name: "user",
@@ -25,14 +25,14 @@ module.exports = {
         try {
           await interaction.member.timeout(
             ms("5m"),
-            "Trying to bully ct bot or arnav. LMAO"
+            "Trying to bully bot or bot admin"
           );
         } catch {
           return interaction.followUp(
-            "Master I don't have permissions to punish you. I am sorry :sob:"
+            "I do not have permissions to punish you. I am sorry."
           );
         }
-        return interaction.followUp("I warned you! Enjoy the mute :yum:");
+        return interaction.followUp("I warned you! Enjoy the mute.");
       }
 
       client.ctbully.push(interaction.user.id);

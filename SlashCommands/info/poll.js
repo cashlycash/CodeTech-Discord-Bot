@@ -3,7 +3,7 @@ const db = require("quick.db");
 
 module.exports = {
   name: "poll",
-  description: "make a new poll",
+  description: "Hold a poll",
   options: [
     {
       name: "content",

@@ -23,7 +23,7 @@ module.exports = {
     if (!inp) {
       interaction.followUp("Please provide a number or type infinity");
     } else if (inp.toLowerCase() === "infinity") {
-      interaction.followUp("on it boss");
+      interaction.followUp("Purging the whole channel");
       const c = await interaction.channel.clone();
       c.setPosition(interaction.channel.position);
       interaction.channel.delete();

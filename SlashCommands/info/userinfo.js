@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "userinfo",
-  description: "Retrive the information of a server member.",
+  description: "Retrive the information of a server member",
   options: [
     {
       name: "member",

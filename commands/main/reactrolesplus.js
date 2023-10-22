@@ -2,18 +2,21 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const Nuggies = require("nuggies");
 
 module.exports = {
-  name: "rr",
-  description: "Reaction Roles using buttons",
-  UserPerms: ["MANAGE_GUILD"],
-  BotPerms: ["MANAGE_ROLES"],
+  name: "reactrolesplus",
+  aliases: ["rrp"],
   /**
    * @param {Client} client
    * @param {Message} message
    * @param {String[]} args
    */
   run: async (client, message, args, Discord) => {
+    var owners = client.config.botadmins;
+    if (!owners.includes(message.author.id)) {
+      return message.channel.send("Limited To The Bot Admins Only!");
+    }
 
-    const roles = []
+    const roles = [];
+    const msgs = [];
 
     message.channel.send(
       "Send messages in `roleID color label emoji` syntax! Once finished say `done`."
@@ -25,21 +28,44 @@ module.exports = {
     });
 
     collector.on("collect", async (msg) => {
-      if (msg.author.bot) return
-      if (!msg.content) return message.channel.send("Invalid syntax");
+      if (msg.author.bot) return;
+      if (!msg.content) return;
       if (msg.content.toLowerCase() == "done") return collector.stop("DONE");
       const colors = ["SUCCESS", "PRIMARY", "DANGER", "SECONDARY"];
       if (
         !msg.content.split(" ")[0].match(/[0-9]{18}/g) ||
         !colors.includes(msg.content.split(" ")[1])
-      )
-        return message.channel.send("Invalid syntax");
+      ) {
+        message.channel.send("Invalid syntax").then((m) => {
+          setTimeout(() => {
+            m.delete();
+            msg.delete();
+          }, 1500);
+        });
+        return 
+      }
 
       const role = msg.content.split(" ")[0];
-      if (!role) return message.channel.send("Invalid role");
+      if (!role) {
+        message.channel.send("Invalid role").then((m) => {
+          setTimeout(() => {
+            m.delete();
+            msg.delete();
+          }, 1500);
+        });
+        return 
+      }
 
       const color = colors.find((color) => color == msg.content.split(" ")[1]);
-      if (!color) return message.channel.send("Invalid color");
+      if (!color) {
+        message.channel.send("Invalid color").then((m) => {
+          setTimeout(() => {
+            m.delete();
+            msg.delete();
+          }, 1500);
+        });
+        return
+      }
 
       const label = msg.content
         .split(" ")
@@ -62,11 +88,12 @@ module.exports = {
         emoji: reaction ? reaction.emoji.id || reaction.emoji.name : null,
       };
       roles.push(final);
-      msg.delete()
+      msgs.push(msg);
     });
 
     collector.on("end", async (msgs, reason) => {
       if (reason == "DONE") {
+        msgs.forEach((msg) => msg.delete());
         const embed = new MessageEmbed()
           .setTitle(args.join(" "))
           .setDescription(
@@ -81,19 +108,17 @@ module.exports = {
             .setStyle(buttonObject.color)
             .setLabel(buttonObject.label)
             .setCustomId(`br:${buttonObject.role}`);
-          buttonObject.emoji
-            ? button.setEmoji(buttonObject.emoji)
-            : null;
+          buttonObject.emoji ? button.setEmoji(buttonObject.emoji) : null;
           buttons.push(button);
         }
         for (let i = 0; i < Math.ceil(roles.length / 5); i++) {
           rows.push(new MessageActionRow());
         }
         rows.forEach((row, i) => {
-          row.addComponents(buttons.slice(0 + (i * 5), 5 + (i * 5)));
+          row.addComponents(buttons.slice(0 + i * 5, 5 + i * 5));
         });
 
-        message.channel.send({ embeds: [embed], components: rows })
+        message.channel.send({ embeds: [embed], components: rows });
       }
     });
   },

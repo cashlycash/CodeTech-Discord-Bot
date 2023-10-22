@@ -38,7 +38,7 @@ module.exports = {
     let timeAdded = interaction.options.getString("time");
 
     const ea = new MessageEmbed()
-      .setTitle("You have been muted in CT LMAO")
+      .setTitle("You have been muted in " + interaction.guild.name)
       .setDescription(
         `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.username}]\n**Reason** - \`${r}\``
       );

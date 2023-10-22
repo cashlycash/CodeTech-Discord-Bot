@@ -5,7 +5,7 @@ module.exports = {
   name: "addevent",
   np: true,
   ephemeral: true,
-  description: "MOD ONLY",
+  description: "Add an event",
   run: async (client, interaction) => {
     if (!interaction.member.permissions.has("MANAGE_GUILD")) {
       return interaction.followUp(
