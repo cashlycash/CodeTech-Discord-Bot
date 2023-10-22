@@ -96,7 +96,7 @@ module.exports = {
           .setDescription(
             "Click on the buttons to get the specific role or vice-versa"
           )
-          .setColor("RANDOM")
+          .setColor("BLUE")
           .setTimestamp();
         const buttons = [];
         const rows = [];
