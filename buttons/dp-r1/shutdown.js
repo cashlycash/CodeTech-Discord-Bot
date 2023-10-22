@@ -9,7 +9,18 @@ module.exports = {
 
     interaction.reply({ embeds: [embed], ephemeral: true })
 
-    setTimeout(() => {
+    
+    const dat = {
+      activities: [{
+        name: "Shutting down...",
+        type: "PLAYING",
+      }],
+      status: 'dnd',
+    };
+    client.user.setPresence(dat);
+
+    setTimeout(async () => {
+      await client.destroy();
       process.exit();
     }, 1000);
   },
