@@ -2,9 +2,25 @@ const client = require("../index.js");
 const db = require("quick.db");
 
 client.on("ready", (msg) => {
+
   require("../web")(client);
-  console.log(`SMH ready as - ${client.user.tag}`);
+  console.log(`Bot online as - ${client.user.tag}`);
   const t = db.get("stat");
-  if (!t) return;
-  client.user.setPresence(JSON.parse(t));
+  if (t) {
+    client.user.setPresence(JSON.parse(t));
+  }
+
+  // Rainbow role
+  if (client.config.rainbowrole.enabled == "true") {
+    let index = 0;
+    let colors = client.config.rainbowrole.colors;
+    setInterval(() => {
+      let role = client.guilds.cache.get(client.config.server).roles.cache.get(client.config.rainbowrole.role);
+      role.setColor(colors[index])
+      index++
+      if (index == colors.length){
+        index = 0
+      }
+    }, 5000);
+  }
 });

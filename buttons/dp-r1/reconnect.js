@@ -2,7 +2,7 @@ module.exports = {
   id: "dp:reconnect",
   run: (client, interaction) => {
     var owners = client.config.botadmins;
-    if (!owners.includes(message.author.id)) {
+    if (!owners.includes(interaction.member.user.id)) {
       return interaction.reply({ content: "Limited To The Bot Admins Only!" , ephemeral: true });
     }
     const { MessageEmbed , MessageActionRow , MessageButton } = require("discord.js");

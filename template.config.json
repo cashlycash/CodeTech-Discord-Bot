@@ -4,6 +4,14 @@
     "userid",
     "userid"
   ],
+  "rainbowrole": {
+    "enabled": "false",
+    "role": "Role id to change color of every min. Make sure the enabled is value is set to true",
+    "colors": [
+      "hex code of a color",
+      "hex code of a color"
+    ]
+  },
   "randomlink": "A random link that will be used in embed titles",
   "verify": {
     "panelurl": "Message link of the verify panel",
@@ -12,7 +20,7 @@
       "selfroles": "self roles channel id",
       "ticket": "ticket channel id"
     },
-    "roles": ["role id to be given on join", "role id to be given on join"]
+    "roles": ["role id to be given on verify", "role id to be given on verify"]
   },
   "leave": {
     "channel": "Channel ID of the gateway message"
