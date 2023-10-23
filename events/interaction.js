@@ -8,6 +8,11 @@ client.on("modalSubmit", async (interaction) => {
   const s = interaction.customId.split(":");
   const se = interaction.customId;
   if (se == "verify") {
+    if (!interaction.guild) {
+      interaction.member = client.guilds.cache
+        .get(client.config.server)
+        .members.cache.get(interaction.user.id);
+    }
     var name = interaction.getTextInputValue("name").trim().split(" ");
     name.forEach((e, index) => {
       name[index] = e[0].toUpperCase() + e.slice(1).toLowerCase();
@@ -40,7 +45,9 @@ client.on("modalSubmit", async (interaction) => {
     }
 
     await client.config.verify.roles.forEach(async (r) => {
-      await interaction.guild.members.cache.get(interaction.member.user.id).roles.add(r);
+      await interaction.guild.members.cache
+        .get(interaction.member.user.id)
+        .roles.add(r);
     });
 
     interaction.member.setNickname(`${name} | ${clas}-${sec}`);

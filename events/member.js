@@ -3,16 +3,29 @@ const client = require("../index");
 const db = require(process.cwd() + "/database.js");
 
 client.on("guildMemberAdd", async (member) => {
-  const row = new MessageActionRow().setComponents(
+  
+    
+  const emb = new MessageEmbed()
+  .setTitle("Verify")
+  .setColor("#6600ff")
+  .setDescription(
+    "Click any one of the buttons bellow to verify and get access to the rest of the server"
+  );
+
+  const btn = new MessageActionRow().setComponents(
     new MessageButton()
-      .setLabel("Verify portal")
+      .setLabel("Verify")
+      .setCustomId("verify")
+      .setStyle("SUCCESS"),
+    new MessageButton()
+      .setLabel("Verifical Portal")
       .setStyle("LINK")
       .setURL(client.config.verify.panelurl)
   );
+
   member.send({
-    content:
-      "> Please verify yourself to get the full access of the server\n> Click the button below to go the verification portal",
-    components: [row],
+    embeds: [emb],
+    components: [btn],
   });
 });
 
