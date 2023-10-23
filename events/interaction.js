@@ -39,9 +39,10 @@ client.on("modalSubmit", async (interaction) => {
       });
     }
 
-    client.config.verify.roles.forEach((r) => {
-      interaction.member.roles.add(r);
+    await client.config.verify.roles.forEach(async (r) => {
+      await interaction.guild.members.cache.get(interaction.member.user.id).roles.add(r);
     });
+
     interaction.member.setNickname(`${name} | ${clas}-${sec}`);
 
     interaction.reply({
