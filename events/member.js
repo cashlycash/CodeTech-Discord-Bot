@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 const client = require("../index");
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 
 client.on("guildMemberAdd", async (member) => {
   const row = new MessageActionRow().setComponents(

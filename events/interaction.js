@@ -2,7 +2,7 @@ const client = require("../index.js");
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 const { Modal, TextInputComponent } = require("discord-modals");
 const ping = require("../functions/ping.js");
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 
 client.on("modalSubmit", async (interaction) => {
   const s = interaction.customId.split(":");
@@ -87,7 +87,7 @@ client.on("modalSubmit", async (interaction) => {
       clas: clas,
       sub: sub,
     };
-    db.push("events", info);
+    await db.push("events", info);
     interaction.reply(
       `Event added\n\`\`\`Name - ${name}\nHost - ${host}\nDesc - ${desc}\nClass - ${clas}\nSub events - ${sub
         .split(",")
@@ -108,7 +108,7 @@ client.on("interactionCreate", async (interaction) => {
       interaction.update(ping(interaction));
     } else if (sid[0] === "event") {
       if (sid[1] === "join") {
-        const events = db.get("events");
+        const events = await db.get("events");
         const ev = events[sid[2]];
         const eb = new MessageEmbed()
           .setTitle(ev.name)
@@ -152,7 +152,7 @@ client.on("interactionCreate", async (interaction) => {
     }
   } else if (interaction.isSelectMenu()) {
     if (interaction.customId == "events") {
-      const events = db.get("events");
+      const events = await db.get("events");
       const ev = events[interaction.values[0]];
       const eb = new MessageEmbed()
         .setTitle(ev.name)

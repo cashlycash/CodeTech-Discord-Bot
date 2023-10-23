@@ -1,11 +1,11 @@
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   id: "vote:end",
-  run: (client, interaction) => {
+  run: async (client, interaction) => {
     const vp = `${interaction.message.id}:vote:owner`;
-    const owner = db.get(vp);
+    const owner = await db.get(vp);
     if (owner != interaction.user.id) {
       return interaction.reply({
         content: `Only the poll owner <@!${owner}> can do this`,

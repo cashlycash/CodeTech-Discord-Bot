@@ -2,7 +2,7 @@ const types = [`PLAYING`, `STREAMING`, "LISTENING", "WATCHING", "COMPETING"];
 
 const icons = ["online", "idle", "offline", "dnd"];
 
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 
 module.exports = {
   ephemeral: true,
@@ -65,7 +65,7 @@ module.exports = {
       status: icon.toLowerCase(),
     };
     await client.user.setPresence(dat);
-    db.set("stat", JSON.stringify(dat));
+    await db.set("stat", JSON.stringify(dat));
     interaction.followUp(JSON.stringify({ type, name, icon, url }));
   },
 };

@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 
 module.exports = {
   name: "poll",
@@ -41,6 +41,6 @@ module.exports = {
     });
 
     const vp = `${msg.id}:vote:owner`;
-    db.set(vp, interaction.user.id);
+    await db.set(vp, interaction.user.id);
   },
 };

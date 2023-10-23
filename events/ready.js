@@ -1,11 +1,11 @@
 const client = require("../index.js");
-const db = require("quick.db");
+const db = require(process.cwd() + "/database.js");
 
-client.on("ready", (msg) => {
+client.on("ready", async (msg) => {
 
   require("../web")(client);
   console.log(`Bot online as - ${client.user.tag}`);
-  const t = db.get("stat");
+  const t = await db.get("stat");
   if (t) {
     client.user.setPresence(JSON.parse(t));
   }

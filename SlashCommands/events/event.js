@@ -1,18 +1,17 @@
 const {
 	MessageEmbed,
-	MessageButton,
 	MessageSelectMenu,
 	MessageActionRow
 } = require('discord.js');
 
-const db = require(`quick.db`)
+const db = require(process.cwd() + "/database.js");
 
 module.exports = {
   name: "events",
   description: "Fetch all active events",
   run: async (client, interaction) => {
     
-		const events = db.get('events')
+		const events = await db.get('events')
 		const emb = new MessageEmbed()
 			.setTitle('Events -')
 			.setDescription('Please browse thru the events and click on any to get more details about it')
