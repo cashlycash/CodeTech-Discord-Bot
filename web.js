@@ -4,6 +4,14 @@ const { request } = require("undici");
 
 async function keepAlive(client) {
 
+  app.use('/static', express.static("views/static")); 
+
+  app.get("/", (req, res) => {
+    res.render("index.ejs", {
+      client: client,
+    });
+  });
+
   app.get("/ticket", async (req, res) => {
     try {
       const { body } = await request(req.query.url);

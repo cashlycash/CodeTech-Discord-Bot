@@ -22,10 +22,17 @@
     "_NOTE_": "denote the number with :no:"
   },
   "ticket": {
-    "hostedurl": "https://ct-bot-088h.onrender.com",
+    "hostedurl": "https://bot.codetechbvn.in",
     "scripts": "1120400768822939648",
     "categ": "1120400835042611311",
     "modrole": "1107550268159184906"
+  },
+  "website": {
+    "botname": "CodeTech Bot",
+    "botavatar": "https://cdn.discordapp.com/avatars/1096029638347722763/37b90f339fdabe2b9a402c3310ce37ed.png",
+    "botdesc": "A Discord bot for Team CodeTech's intra-school server. Developed by Team CodeTech's lead developer. Made with ❤ & ☕ for the community.",
+    "discordinvite": "https://discord.gg/RsdxW4HXC5",
+    "mainwebsite": "https://codetechbvn.in"
   },
   "server": "1106963301121937460"
 }

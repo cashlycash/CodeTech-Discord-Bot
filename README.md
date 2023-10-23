@@ -4,7 +4,7 @@
 </p>
 
 # CodeTech Discord bot
-This is a Discord Bot for the [`BVN CodeTech`](https://github.com/BVNCodeTech)'s intra-school server
+This is a Discord Bot for the [`Team CodeTech`](https://github.com/BVNCodeTech)'s intra-school server
 
 ![Lines of code](https://tokei.rs/b1/github/cashlycash/CodeTech-Discord-Bot?style=for-the-badge) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/cashlycash/CodeTech-Discord-Bot?style=for-the-badge) ![GitHub repo size](https://img.shields.io/github/repo-size/cashlycash/CodeTech-Discord-Bot?style=for-the-badge)
 ## Logics

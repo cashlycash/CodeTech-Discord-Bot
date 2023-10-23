@@ -28,5 +28,12 @@
     "categ": "category id to make the tickets in",
     "modrole": "role id to give access to the chanel when ticket created"
   },
+  "website": {
+    "botname": "Name of the bot",
+    "botavatar": "AvatarURL of the bot",
+    "botdesc": "A small description of the bot",
+    "discordinvite": "Discord invite link for the server",
+    "mainwebsite": "Main website link"
+  },
   "server": "server id to be used for setting slash commands"
 }
