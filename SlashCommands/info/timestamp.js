@@ -13,10 +13,19 @@ module.exports = {
       type: "STRING",
       required: true,
     },
+    {
+      name: "subtract",
+      description: "subtract",
+      type: "BOOLEAN",
+      required: false,
+    }
   ],
   run: async (client, interaction) => {
-    let timeAdded = interaction.options.getString("time");
-    let time = Date.now() + ms(timeAdded);
+    var timeAdded = interaction.options.getString("time");
+    var subtract = interaction.options.getBoolean("subtract");
+    var time;
+    if (subtract) time = Date.now() - ms(timeAdded);
+    else time = Date.now() + ms(timeAdded);
     time = time.toString().slice(0, -3);
     interaction.followUp(`\`<t:${time}:R>\``);
   },
