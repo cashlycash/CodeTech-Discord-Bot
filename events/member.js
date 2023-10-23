@@ -17,6 +17,9 @@ client.on("guildMemberAdd", async (member) => {
 });
 
 client.on("guildMemberRemove", async (member) => {
+
+  if (member.user.bot) return;
+
   const emb = new MessageEmbed()
     .setTitle(`${member.user.username} Left 😢`)
     .setDescription(`Hope to see them soon`)

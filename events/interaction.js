@@ -8,23 +8,33 @@ client.on("modalSubmit", async (interaction) => {
   const s = interaction.customId.split(":");
   const se = interaction.customId;
   if (se == "verify") {
-    const name = interaction.getTextInputValue("name");
-    const clas = interaction.getTextInputValue("class");
-    const sec = interaction.getTextInputValue("sec");
-    if (sec.length > 1) {
-      return interaction.reply({
-        content: "Please make sure that your section is just 1 character",
-        ephemeral: true,
-      });
-    } else if (parseInt(clas) == NaN) {
+    var name = interaction.getTextInputValue("name").trim().split(" ");
+    name.forEach((e, index) => {
+      name[index] = e[0].toUpperCase() + e.slice(1).toLowerCase();
+    });
+    name = name.join(" ");
+    var clas = parseInt(interaction.getTextInputValue("class"));
+    var sec = interaction.getTextInputValue("sec").toUpperCase();
+
+    if (clas.toString() == "NaN") {
       return interaction.reply({
         content: "Please make sure that your class is a number",
         ephemeral: true,
       });
-    } else if (parseInt(clas) < 6 || parseInt(clas) > 12) {
+    } else if (clas < 6 || clas > 12) {
       return interaction.reply({
         content:
           "Please make sure that your class is a number between 6 and 12",
+        ephemeral: true,
+      });
+    } else if (sec.length > 1) {
+      return interaction.reply({
+        content: "Please make sure that your section is just 1 character",
+        ephemeral: true,
+      });
+    } else if (sec.charCodeAt(0) < 65 || sec.charCodeAt(0) > 90) {
+      return interaction.reply({
+        content: "Please make sure that your section is a letter",
         ephemeral: true,
       });
     }
