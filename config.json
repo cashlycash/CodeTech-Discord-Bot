@@ -1,10 +1,10 @@
 {
   "prefix": "!",
   "botadmins": [
-    "1056591132739506248"
+    "864709393362059274"
   ],
   "rainbowrole": {
-    "enabled": "true",
+    "enabled": "false",
     "role": "1107551391607705722",
     "colors": [
       "#9e42f5",
