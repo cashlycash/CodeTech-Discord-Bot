@@ -2,7 +2,7 @@ const client = require("../index.js");
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 const { Modal, TextInputComponent } = require("discord-modals");
 const ping = require("../functions/ping.js");
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 
 client.on("modalSubmit", async (interaction) => {
   const s = interaction.customId.split(":");

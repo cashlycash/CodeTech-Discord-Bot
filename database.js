@@ -1,4 +1,18 @@
 const { QuickDB } = require("quick.db");
-const db = new QuickDB(); 
+const { MongoDriver } = require("quickmongo");
 
-module.exports = db;
+var db;
+
+var initalise = async () => {
+  const driver = new MongoDriver(process.env.mongodb);
+  await driver.connect();
+  console.log(`Connected to the database!`);
+  db = new QuickDB({ driver });
+
+  return db;
+};
+
+module.exports = {
+  db,
+  initalise,
+};

@@ -1,4 +1,4 @@
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {

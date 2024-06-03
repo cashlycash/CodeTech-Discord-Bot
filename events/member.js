@@ -1,16 +1,14 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 const client = require("../index");
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 
 client.on("guildMemberAdd", async (member) => {
-  
-    
   const emb = new MessageEmbed()
-  .setTitle("Verify")
-  .setColor("#6600ff")
-  .setDescription(
-    "Click any one of the buttons bellow to verify and get access to the rest of the server"
-  );
+    .setTitle("Verify")
+    .setColor("#6600ff")
+    .setDescription(
+      "Click any one of the buttons bellow to verify and get access to the rest of the server"
+    );
 
   const btn = new MessageActionRow().setComponents(
     new MessageButton()
@@ -30,7 +28,6 @@ client.on("guildMemberAdd", async (member) => {
 });
 
 client.on("guildMemberRemove", async (member) => {
-
   if (member.user.bot) return;
 
   const emb = new MessageEmbed()

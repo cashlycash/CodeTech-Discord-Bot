@@ -2,7 +2,7 @@ const types = [`PLAYING`, `STREAMING`, "LISTENING", "WATCHING", "COMPETING"];
 
 const icons = ["online", "idle", "offline", "dnd"];
 
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
   ephemeral: true,

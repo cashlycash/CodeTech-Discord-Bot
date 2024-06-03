@@ -1,18 +1,18 @@
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
   id: "vote:no",
   run: async (client, interaction) => {
     const vp = `${interaction.message.id}:${interaction.user.id}:vote`;
     var n = null;
-    if (await db.get(vp) == "no") {
+    if ((await db.get(vp)) == "no") {
       n = interaction.message.components;
       var nb = n[0].components;
       const d = nb[1].label;
       const x = parseInt(d) - 1;
       n[0].components[1].label = x.toString();
       await db.set(vp, "null");
-    } else if (await db.get(vp) == "yes") {
+    } else if ((await db.get(vp)) == "yes") {
       n = interaction.message.components;
       var nb = n[0].components;
       const d = nb[0].label;

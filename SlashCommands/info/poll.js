@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const db = require(process.cwd() + "/database.js");
+const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
   name: "poll",
