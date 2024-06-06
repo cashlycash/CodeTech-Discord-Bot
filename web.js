@@ -20,6 +20,7 @@ async function keepAlive(client) {
     }
   });
 
+  if (!process.env.port) console.log(`No port defined. Defaulting to 3000`);
   const port = process.env.port || 3000;
   app.listen(port, () =>
     console.log(`App listening on https://localhost:${port}/`)

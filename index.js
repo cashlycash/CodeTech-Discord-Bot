@@ -45,6 +45,8 @@ require("./handler")(client);
 
 module.exports = client;
 
-console.log("Logging in...");
+if (!process.env.token) {
+  throw "No bot token defined";
+}
 console.log(`Token: \"${process.env.token}\"`);
 client.login(process.env.token);
