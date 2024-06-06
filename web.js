@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const { request } = require("undici");
 
+if (!process.env.port) console.log(`[🌐] No port defined. Defaulting to 3000`);
+else console.log(`[🌐] Port: ${process.env.port}`);
+
 async function keepAlive(client) {
   app.use("/static", express.static("views/static"));
 
@@ -19,11 +22,9 @@ async function keepAlive(client) {
       res.send(e);
     }
   });
-
-  if (!process.env.port) console.log(`No port defined. Defaulting to 3000`);
   const port = process.env.port || 3000;
   app.listen(port, () =>
-    console.log(`App listening on https://localhost:${port}/`)
+    console.log(`[🌐] App listening on https://localhost:${port}/`)
   );
 }
 

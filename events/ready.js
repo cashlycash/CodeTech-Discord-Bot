@@ -4,7 +4,8 @@ client.on("ready", async (msg) => {
   await require("../web")(client);
   const db = await require(process.cwd() + "/database.js").initalise();
 
-  console.log(`Bot online as - ${client.user.tag}`);
+  console.log(`[🤖] Active as ${client.user.tag}`);
+  console.log(`[--------------${"-".repeat(client.user.tag.length)}]`);
 
   const t = await db.get("stat");
   if (t) {

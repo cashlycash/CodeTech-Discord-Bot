@@ -48,5 +48,6 @@ module.exports = client;
 if (!process.env.token) {
   throw "No bot token defined";
 }
-console.log(`Token: \"${process.env.token}\"`);
+console.log(`[-----------${"-".repeat(process.env.token.length)}-]`);
+console.log(`[🤖] Token: \"${process.env.token}\"`);
 client.login(process.env.token);
