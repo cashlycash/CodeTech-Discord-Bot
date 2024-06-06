@@ -3,8 +3,7 @@ const app = express();
 const { request } = require("undici");
 
 async function keepAlive(client) {
-
-  app.use('/static', express.static("views/static")); 
+  app.use("/static", express.static("views/static"));
 
   app.get("/", (req, res) => {
     res.render("index.ejs", {
@@ -21,7 +20,7 @@ async function keepAlive(client) {
     }
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.port || 3000;
   app.listen(port, () =>
     console.log(`App listening on https://localhost:${port}/`)
   );
