@@ -1,4 +1,10 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const {
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ApplicationCommandOptionType,
+} = require("discord.js");
 const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
@@ -8,30 +14,30 @@ module.exports = {
     {
       name: "content",
       description: "poll's content",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
   ],
   run: async (client, interaction) => {
     const cont = interaction.options.getString("content");
-    const emb = new MessageEmbed()
+    const emb = new EmbedBuilder()
       .setTitle("Poll")
       .setDescription(`${cont}`)
-      .setColor("YELLOW");
-    const btn = new MessageActionRow().setComponents(
-      new MessageButton()
+      .setColor("Yellow");
+    const btn = new ActionRowBuilder().setComponents(
+      new ButtonBuilder()
         .setLabel("0")
-        .setStyle("SUCCESS")
+        .setStyle(ButtonStyle.Success)
         .setEmoji("👍")
         .setCustomId("vote:yes"),
-      new MessageButton()
+      new ButtonBuilder()
         .setLabel("0")
-        .setStyle("DANGER")
+        .setStyle(ButtonStyle.Danger)
         .setEmoji("👎")
         .setCustomId("vote:no"),
-      new MessageButton()
+      new ButtonBuilder()
         .setLabel("END POLL")
-        .setStyle("PRIMARY")
+        .setStyle(ButtonStyle.Primary)
         .setCustomId("vote:end")
     );
 

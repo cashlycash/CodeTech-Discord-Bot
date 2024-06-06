@@ -7,15 +7,23 @@ module.exports = {
   run: (client, interaction) => {
     var owners = client.config.botadmins;
     if (!owners.includes(interaction.member.user.id)) {
-      return interaction.reply({ content: "Limited To The Bot Admins Only!" , ephemeral: true });
+      return interaction.reply({
+        content: "Limited To The Bot Admins Only!",
+        ephemeral: true,
+      });
     }
-    const { MessageEmbed , MessageActionRow , MessageButton } = require("discord.js");
+    const {
+      EmbedBuilder,
+      ActionRowBuilder,
+      ButtonBuilder,
+      ButtonStyle,
+    } = require("discord.js");
 
-    const embed = new MessageEmbed()
-      .setColor("BLUE")
-      .setTitle("Re-registering all commands...")
+    const embed = new EmbedBuilder()
+      .setColor("Blue")
+      .setTitle("Re-registering all commands...");
 
-    interaction.reply({ embeds: [embed], ephemeral: true })
+    interaction.reply({ embeds: [embed], ephemeral: true });
 
     setTimeout(async () => {
       // Slash Commands
@@ -58,7 +66,6 @@ module.exports = {
           file.aliases.forEach((alias) => client.aliases.set(alias, file.name));
         }
       });
-
     }, 1000);
   },
 };

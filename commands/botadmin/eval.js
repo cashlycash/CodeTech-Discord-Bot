@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "eval",
@@ -20,20 +20,39 @@ module.exports = {
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
-      let embed = new MessageEmbed()
-        .setAuthor("Eval", message.author.avatarURL())
-        .addField("Input", `\`\`\`js\n${code}\`\`\``)
-        .addField("Output", `\`\`\`${evaled}\`\`\``)
-        .setColor("GREEN");
+      let embed = new EmbedBuilder()
+        .setAuthor({
+          name: "Eval",
+          iconURL: message.author.avatarURL(),
+        })
+        .addFields(
+          {
+            name: "Input",
+            value: `\`\`\`js\n${code}\`\`\``,
+          },
+          { name: "Output", value: `\`\`\`${evaled}\`\`\`` }
+        )
+        .setColor("Green");
 
       message.channel.send({ embeds: [embed] });
     } catch (err) {
       const code = args.join(" ").slice(6).slice(0, -3);
-      let embed = new MessageEmbed()
-        .setAuthor("Eval", message.author.avatarURL())
-        .addField("Input", `\`\`\`js\n${code}\`\`\``)
-        .addField("Error", `\`\`\`${err}\`\`\``)
-        .setColor("RED");
+      let embed = new EmbedBuilder()
+        .setAuthor({
+          name: "Eval",
+          iconURL: message.author.avatarURL(),
+        })
+        .addFields(
+          {
+            name: "Input",
+            value: `\`\`\`js\n${code}\`\`\``,
+          },
+          {
+            name: "Error",
+            value: `\`\`\`${err}\`\`\``,
+          }
+        )
+        .setColor("Red");
       message.channel.send({ embeds: [embed] });
     }
   },

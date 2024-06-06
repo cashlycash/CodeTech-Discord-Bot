@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "serverinfo",
@@ -24,7 +24,7 @@ module.exports = {
     const Roles = guild.roles.cache.size;
     const time = guild.createdTimestamp.toString().slice(0, -3);
 
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
       .setAuthor({ name: guild.name, iconURL: guild.iconURL() })
       .setColor(guild.me.displayHexColor)
       .setDescription(

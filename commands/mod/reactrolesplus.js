@@ -1,5 +1,9 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const Nuggies = require("nuggies");
+const {
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require("discord.js");
 
 module.exports = {
   name: "reactrolesplus",
@@ -39,7 +43,7 @@ module.exports = {
             msg.delete();
           }, 1500);
         });
-        return 
+        return;
       }
 
       const role = msg.content.split(" ")[0];
@@ -50,7 +54,7 @@ module.exports = {
             msg.delete();
           }, 1500);
         });
-        return 
+        return;
       }
 
       const color = colors.find((color) => color == msg.content.split(" ")[1]);
@@ -61,7 +65,7 @@ module.exports = {
             msg.delete();
           }, 1500);
         });
-        return
+        return;
       }
 
       const label = msg.content
@@ -91,17 +95,17 @@ module.exports = {
     collector.on("end", async (msgs, reason) => {
       if (reason == "DONE") {
         msgs.forEach((msg) => msg.delete());
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
           .setTitle(args.join(" "))
           .setDescription(
             "Click on the buttons to get the specific role or vice-versa"
           )
-          .setColor("BLUE")
+          .setColor("Blue")
           .setTimestamp();
         const buttons = [];
         const rows = [];
         for (const buttonObject of roles) {
-          const button = new MessageButton()
+          const button = new ButtonBuilder()
             .setStyle(buttonObject.color)
             .setLabel(buttonObject.label)
             .setCustomId(`br:${buttonObject.role}`);
@@ -109,7 +113,7 @@ module.exports = {
           buttons.push(button);
         }
         for (let i = 0; i < Math.ceil(roles.length / 5); i++) {
-          rows.push(new MessageActionRow());
+          rows.push(new ActionRowBuilder());
         }
         rows.forEach((row, i) => {
           row.addComponents(buttons.slice(0 + i * 5, 5 + i * 5));

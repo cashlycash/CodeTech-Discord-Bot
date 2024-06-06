@@ -1,4 +1,10 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+  ApplicationCommandOptionType,
+} = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -10,15 +16,15 @@ module.exports = {
       type: 3,
       name: "time",
       description: "time",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
     {
       name: "subtract",
       description: "subtract",
-      type: "BOOLEAN",
+      type: ApplicationCommandOptionType.Boolean,
       required: false,
-    }
+    },
   ],
   run: async (client, interaction) => {
     var timeAdded = interaction.options.getString("time");

@@ -1,20 +1,25 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+} = require("discord.js");
 
 module.exports = {
   id: "tkt",
   run: async (client, interaction) => {
-    const emb = new MessageEmbed()
+    const emb = new EmbedBuilder()
       .setTitle(`Confirmation`)
       .setDescription(
         "Are you sure you wanna open a ticket? This will send make a new channel just for your conversation with the admins.\n**Please don't instantly close your ticket after making.**"
       )
-      .setColor("RED");
+      .setColor("Red");
 
-    const btn = new MessageActionRow().setComponents(
-      new MessageButton()
+    const btn = new ActionRowBuilder().setComponents(
+      new ButtonBuilder()
         .setLabel("Continue")
         .setCustomId("tkt:m")
-        .setStyle("DANGER")
+        .setStyle(ButtonStyle.Danger)
     );
 
     interaction.reply({

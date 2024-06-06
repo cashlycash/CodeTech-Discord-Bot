@@ -1,34 +1,39 @@
 module.exports = {
   id: "dp:network",
   run: (client, interaction) => {
-    const { MessageEmbed , MessageActionRow , MessageButton } = require("discord.js");
+    const {
+      EmbedBuilder,
+      ActionRowBuilder,
+      ButtonBuilder,
+      ButtonStyle,
+    } = require("discord.js");
 
-    const embed = new MessageEmbed()
-      .setColor("BLUE")
+    const embed = new EmbedBuilder()
+      .setColor("Blue")
       .setTitle("Network Status")
       .setDescription(
         `**Webhook Ping:** ${client.ws.ping}ms\n**Latency:** ${
-          interaction.createdTimestamp - Date.now() 
+          interaction.createdTimestamp - Date.now()
         }ms`
       )
       .setTimestamp();
 
-    const row = new MessageActionRow().addComponents(
-      new MessageButton()
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setCustomId("dp:reconnect")
         .setLabel("Reconnect Webhook")
-        .setStyle("PRIMARY"),
-      new MessageButton()
+        .setStyle(ButtonStyle.Primary),
+      new ButtonBuilder()
         .setCustomId("dp:network")
         .setLabel("Refresh")
-        .setStyle("PRIMARY")
+        .setStyle(ButtonStyle.Primary)
     );
 
-    const back = new MessageActionRow().addComponents(
-      new MessageButton()
+    const back = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setCustomId("dp:back")
         .setLabel("Back")
-        .setStyle("DANGER")
+        .setStyle(ButtonStyle.Danger)
     );
 
     interaction.update({ embeds: [embed], components: [row, back] });

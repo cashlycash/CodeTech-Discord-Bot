@@ -1,4 +1,11 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+  ApplicationCommandOptionType,
+  PermissionFlagsBits,
+} = require("discord.js");
 
 module.exports = {
   ephemeral: true,
@@ -8,12 +15,14 @@ module.exports = {
     {
       name: "number",
       description: "How many messages to purge [infinity / number]",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
   ],
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has("MANAGE_MESSAGES")) {
+    if (
+      !interaction.member.permissions.has(PermissionFlagsBits.ManageMessages)
+    ) {
       return interaction.followUp(
         "You need `[MANAGE_MESSAGES]` permission to use this command"
       );

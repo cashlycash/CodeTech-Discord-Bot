@@ -1,38 +1,54 @@
-const { Client, Collection } = require("discord.js");
-const Nuggies = require("nuggies");
-const discordModals = require("discord-modals");
+const {
+  Client,
+  GatewayIntentBits,
+  Collection,
+  Partials,
+} = require(`discord.js`);
 
 require("dotenv").config();
 
 const client = new Client({
   intents: [
-    "GUILDS",
-    "GUILD_MEMBERS",
-    "GUILD_BANS",
-    "GUILD_INTEGRATIONS",
-    "GUILD_WEBHOOKS",
-    "GUILD_INVITES",
-    "GUILD_VOICE_STATES",
-    "GUILD_PRESENCES",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-    "GUILD_MESSAGE_TYPING",
-    "DIRECT_MESSAGES",
-    "DIRECT_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGE_TYPING",
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildBans,
+    GatewayIntentBits.GuildEmojisAndStickers,
+    GatewayIntentBits.GuildIntegrations,
+    GatewayIntentBits.GuildWebhooks,
+    GatewayIntentBits.GuildInvites,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildMessageTyping,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.DirectMessageTyping,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildScheduledEvents,
   ],
-  partials: ["CHANNEL"],
-  allowedMentions: {
-    parse: ["roles", "users", "everyone"],
-  },
+  partials: [
+    Partials.User,
+    Partials.Channel,
+    Partials.GuildMember,
+    Partials.Message,
+    Partials.Reaction,
+    Partials.GuildScheduledEvent,
+    Partials.ThreadMember,
+  ],
 });
 
 process.on("unhandledRejection", (error) => {
   console.log(error);
 });
-
-discordModals(client);
-Nuggies.handleInteractions(client);
+process.on("uncaughtException", (error) => {
+  console.log(error);
+});
+process.on("exit", (error) => {
+  console.log(error);
+});
+client.on("error", (error) => {
+  console.log(error);
+});
 
 client.ctbully = [];
 client.commands = new Collection();

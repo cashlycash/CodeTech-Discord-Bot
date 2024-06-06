@@ -1,4 +1,10 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+  PermissionFlagsBits,
+} = require("discord.js");
 
 module.exports = {
   id: "tkt:m",
@@ -16,34 +22,35 @@ module.exports = {
       });
     }
     interaction.guild.channels
-      .create(`ticket-${interaction.user.id}`, {
+      .create({
+        name: `ticket-${interaction.user.id}`,
         topic: `Ticket for <@!${interaction.user.id}>`,
         parent: client.config.ticket.categ,
       })
       .then((c) => {
         c.permissionOverwrites.create(interaction.user.id, {
-          VIEW_CHANNEL: true,
+          ViewChannel: true,
         });
-        c.permissionOverwrites.create(client.user.id, { VIEW_CHANNEL: true });
+        c.permissionOverwrites.create(client.user.id, { ViewChannel: true });
         c.permissionOverwrites.create(client.config.ticket.modrole, {
-          VIEW_CHANNEL: true,
+          ViewChannel: true,
         });
         c.permissionOverwrites.create(everyoneRole.id, {
-          VIEW_CHANNEL: false,
+          ViewChannel: false,
         });
 
-        const emb = new MessageEmbed()
+        const emb = new EmbedBuilder()
           .setTitle(`Hey! ${interaction.user.username}`)
           .setDescription(
             "Please do not ping the staff. We will get to you as soon as possible."
           )
-          .setColor("BLURPLE");
+          .setColor("Blurple");
 
-        const btn = new MessageActionRow().setComponents(
-          new MessageButton()
+        const btn = new ActionRowBuilder().setComponents(
+          new ButtonBuilder()
             .setLabel("Close Ticket")
             .setCustomId("tkt:c")
-            .setStyle("DANGER")
+            .setStyle(ButtonStyle.Danger)
         );
 
         c.send({

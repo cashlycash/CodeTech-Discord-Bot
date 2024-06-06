@@ -1,4 +1,9 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+} = require("discord.js");
 const discordTranscripts = require("discord-html-transcripts");
 
 module.exports = {
@@ -11,22 +16,22 @@ module.exports = {
     await interaction.deferReply();
     var c = interaction.channel;
     const au = c.name.split("-")[1];
-    c.permissionOverwrites.create(au, { VIEW_CHANNEL: false });
+    c.permissionOverwrites.create(au, { ViewChannel: false });
 
     const att = await discordTranscripts.createTranscript(c);
 
-    const btn = new MessageActionRow().setComponents(
-      new MessageButton()
+    const btn = new ActionRowBuilder().setComponents(
+      new ButtonBuilder()
         .setLabel("Delete Ticket")
         .setCustomId("tkt:d")
-        .setStyle("DANGER")
+        .setStyle(ButtonStyle.Danger)
     );
-    const emb = new MessageEmbed()
+    const emb = new EmbedBuilder()
       .setTitle("The ticket was closed!")
       .setDescription(
         `By - <@!${interaction.user.id}>\nTicket Owner - <@!${au}>`
       )
-      .setColor("RED");
+      .setColor("Red");
 
     var stuf = {
       content: "Ticket Closed!",
@@ -43,10 +48,10 @@ module.exports = {
         link = `${client.config.ticket.hostedurl}/ticket?url=${
           msg.attachments.first().url
         }`;
-        const row = new MessageActionRow().addComponents(
-          new MessageButton()
+        const row = new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
             .setLabel("View Transcript")
-            .setStyle("LINK")
+            .setStyle(ButtonStyle.Link)
             .setURL(link)
         );
         msg.edit({ embeds: [emb] });

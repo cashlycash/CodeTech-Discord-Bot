@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder, ApplicationCommandOptionType } = require("discord.js");
 
 module.exports = {
   name: "userinfo",
@@ -9,7 +9,7 @@ module.exports = {
     {
       name: "member",
       description: "Person whom you want information about",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: false,
     },
   ],
@@ -19,8 +19,11 @@ module.exports = {
     const activities = member.presence?.activities || [];
 
     const focusActivity = activities.find((x) => x.assets);
-    const embed = new MessageEmbed()
-      .setAuthor(member.user.username, member.user.displayAvatarURL())
+    const embed = new EmbedBuilder()
+      .setAuthor({
+        name: member.user.username,
+        iconURL: member.user.displayAvatarURL(),
+      })
       .setColor(
         member.displayHexColor === "#000000"
           ? "#ffffff"
@@ -41,29 +44,33 @@ module.exports = {
           )
           .join("\n")
       )
-      .addField(
-        "JoinedAt",
-        `<t:${member.joinedTimestamp.toString().slice(0, -3)}:R>`,
-        true
-      )
-      .addField(
-        "Account Created At",
-        `<t:${member.user.createdTimestamp.toString().slice(0, -3)}:R>`,
-        true
-      )
-      .addField(
-        "Common Information",
-        [
-          `Real Name: \`${member.displayName}\``,
-          `Kewl kid: \`${
-            member.roles.cache.has("1014907026553450557") ? "Yes" : "No"
-          }\``,
-          `Booster: \`${
-            member.premiumSince
-              ? "since " + member.premiumSince.toLocaleString()
-              : "Nope"
-          }\``,
-        ].join("\n")
+      .addFields(
+        {
+          name: "JoinedAt",
+          value: `<t:${member.joinedTimestamp.toString().slice(0, -3)}:R>`,
+          inline: true,
+        },
+        {
+          name: "Account Created At",
+          value: `<t:${member.user.createdTimestamp
+            .toString()
+            .slice(0, -3)}:R>`,
+          inline: true,
+        },
+        {
+          name: "Common Information",
+          value: [
+            `Real Name: \`${member.displayName}\``,
+            `Kewl kid: \`${
+              member.roles.cache.has("1014907026553450557") ? "Yes" : "No"
+            }\``,
+            `Booster: \`${
+              member.premiumSince
+                ? "since " + member.premiumSince.toLocaleString()
+                : "Nope"
+            }\``,
+          ].join("\n"),
+        }
       );
 
     return interaction.followUp({ embeds: [embed] });

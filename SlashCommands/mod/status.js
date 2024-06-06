@@ -1,3 +1,8 @@
+const {
+  ApplicationCommandOptionType,
+  PermissionFlagsBits,
+} = require("discord.js");
+
 const types = [`PLAYING`, `STREAMING`, "LISTENING", "WATCHING", "COMPETING"];
 
 const icons = ["online", "idle", "offline", "dnd"];
@@ -10,7 +15,7 @@ module.exports = {
   description: "Set the bot's status!",
   options: [
     {
-      type: 3,
+      type: ApplicationCommandOptionType.String,
       name: "type",
       description: "Status type",
       choices: types.map((type) => {
@@ -22,14 +27,14 @@ module.exports = {
       required: true,
     },
     {
-      type: 3,
+      type: ApplicationCommandOptionType.String,
       name: "name",
       description: "Status Text",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
     {
-      type: 3,
+      type: ApplicationCommandOptionType.String,
       name: "icon",
       description: "Status Icon",
       choices: icons.map((ic) => {
@@ -41,15 +46,15 @@ module.exports = {
       required: false,
     },
     {
-      type: 3,
+      type: ApplicationCommandOptionType.String,
       name: "url",
       description: "Status url",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: false,
     },
   ],
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has("MANAGE_GUILD")) {
+    if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
       return interaction.followUp(
         "You need `[MANAGE_GUILD]` permission to use this command"
       );

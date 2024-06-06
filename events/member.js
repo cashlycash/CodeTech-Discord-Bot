@@ -1,23 +1,28 @@
-const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
+const {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  EmbedBuilder,
+} = require("discord.js");
 const client = require("../index");
 const db = require(process.cwd() + "/database.js").db;
 
 client.on("guildMemberAdd", async (member) => {
-  const emb = new MessageEmbed()
+  const emb = new EmbedBuilder()
     .setTitle("Verify")
     .setColor("#6600ff")
     .setDescription(
       "Click any one of the buttons bellow to verify and get access to the rest of the server"
     );
 
-  const btn = new MessageActionRow().setComponents(
-    new MessageButton()
+  const btn = new ActionRowBuilder().setComponents(
+    new ButtonBuilder()
       .setLabel("Verify")
       .setCustomId("verify")
-      .setStyle("SUCCESS"),
-    new MessageButton()
+      .setStyle(ButtonStyle.Success),
+    new ButtonBuilder()
       .setLabel("Verifical Portal")
-      .setStyle("LINK")
+      .setStyle(ButtonStyle.Link)
       .setURL(client.config.verify.panelurl)
   );
 
@@ -30,10 +35,10 @@ client.on("guildMemberAdd", async (member) => {
 client.on("guildMemberRemove", async (member) => {
   if (member.user.bot) return;
 
-  const emb = new MessageEmbed()
+  const emb = new EmbedBuilder()
     .setTitle(`${member.user.username} Left 😢`)
     .setDescription(`Hope to see them soon`)
-    .setColor(`YELLOW`);
+    .setColor(`Yellow`);
 
   member.guild.channels.cache
     .get(client.config.leave.channel)

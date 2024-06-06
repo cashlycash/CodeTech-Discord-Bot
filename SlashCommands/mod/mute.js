@@ -1,4 +1,11 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const {
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ActionRowBuilder,
+  PermissionFlagsBits,
+  ApplicationCommandOptionType,
+} = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -10,24 +17,24 @@ module.exports = {
       type: 3,
       name: "time",
       description: "time",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
     {
       name: "user",
       description: "Person whom you want to mute",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: true,
     },
     {
       name: "reason",
       description: "Why mute",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true,
     },
   ],
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has("MANAGE_GUILD")) {
+    if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
       return interaction.followUp(
         "You need `[MANAGE_GUILD]` permission to use this command"
       );
@@ -37,7 +44,7 @@ module.exports = {
     const r = interaction.options.getString("reason");
     let timeAdded = interaction.options.getString("time");
 
-    const ea = new MessageEmbed()
+    const ea = new EmbedBuilder()
       .setTitle("You have been muted in " + interaction.guild.name)
       .setDescription(
         `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.username}]\n**Reason** - \`${r}\``

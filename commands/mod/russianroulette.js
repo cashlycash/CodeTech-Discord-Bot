@@ -23,27 +23,32 @@ module.exports = {
     message
       .reply(`Welcome to russian roulette\n\`[ Spinning the chamber ]\``)
       .then((msg) => {
-        for (let i = 0; i < newpps.length; i++) {
+        for (let i = 1; i <= newpps.length; i++) {
           setTimeout(() => {
             setTimeout(() => {
-              if (newpps[i].id === unlucky.id) {
+              if (newpps[i - 1].id === unlucky.id) {
                 unlucky.timeout(ms(args[0]), "roulette");
-
-                message.reply(
-                  `> **<@!${unlucky.user.id}>** got \`UNLUCKY\` and muted for ${args[0]} :rofl:`
+                msg.edit(
+                  `Gun passed to <@!${
+                    newpps[i - 1].user.id
+                  }>\n\`[ Gun shot sounds ]\``
                 );
 
-                return msg.edit(
-                  `Gun passed to <@!${newpps[i].user.id}>\n\`[ Gun shot sounds ]\``
-                );
+                setTimeout(() => {
+                  message.reply(
+                    `> **<@!${unlucky.user.id}>** got \`UNLUCKY\` and muted for ${args[0]} :rofl:`
+                  );
+                }, 2000);
               } else {
                 msg.edit(
-                  `Gun passed to <@!${newpps[i].user.id}>\n\`[ Empty trigger pulled ]\``
+                  `Gun passed to <@!${
+                    newpps[i - 1].user.id
+                  }>\n\`[ Empty trigger pulled ]\``
                 );
               }
-            }, 1000);
-            msg.edit(`Gun passed to <@!${newpps[i].user.id}>`);
-          }, 1000 * i);
+            }, 2000);
+            msg.edit(`Gun passed to <@!${newpps[i - 1].user.id}>`);
+          }, 5000 * i);
         }
       });
   },

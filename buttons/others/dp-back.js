@@ -1,99 +1,102 @@
-module.exports = { 
+module.exports = {
   id: "dp:back",
   run: (client, interaction) => {
+    const {
+      EmbedBuilder,
+      ActionRowBuilder,
+      ButtonBuilder,
+      ButtonStyle,
+    } = require("discord.js");
 
-    const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setTitle("Debug Panel")
       .setDescription("Self care panel for the bot.")
-      .setColor("BLURPLE");
-    const row1 = new MessageActionRow()
+      .setColor("Blurple");
+    const row1 = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:row1a")
           .setLabel("Actions")
-          .setStyle("SECONDARY")
+          .setStyle(ButtonStyle.Secondary)
           .setDisabled(true)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:shutdown")
           .setLabel("Shutdown Process")
-          .setStyle("DANGER")
+          .setStyle(ButtonStyle.Danger)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:reconnect")
           .setLabel("Reconnect Webhook")
-          .setStyle("DANGER")
+          .setStyle(ButtonStyle.Danger)
       );
-    const row2 = new MessageActionRow()
+    const row2 = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:row1b")
           .setLabel("Actions")
-          .setStyle("SECONDARY")
+          .setStyle(ButtonStyle.Secondary)
           .setDisabled(true)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:reregister")
           .setLabel("Re-register Commands")
-          .setStyle("DANGER")
+          .setStyle(ButtonStyle.Danger)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:reloadenb")
           .setLabel("Reload All Buttons")
-          .setStyle("DANGER")
+          .setStyle(ButtonStyle.Danger)
       );
-    const row3 = new MessageActionRow()
+    const row3 = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:row2a")
           .setLabel("‎ Status ‎")
-          .setStyle("SECONDARY")
+          .setStyle(ButtonStyle.Secondary)
           .setDisabled(true)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:status")
           .setLabel("Hosting Status")
-          .setStyle("PRIMARY")
+          .setStyle(ButtonStyle.Primary)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:network")
           .setLabel("Network Information")
-          .setStyle("PRIMARY")
+          .setStyle(ButtonStyle.Primary)
       );
 
-    const row4 = new MessageActionRow()
+    const row4 = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:row2b")
           .setLabel("‎ Status ‎")
-          .setStyle("SECONDARY")
+          .setStyle(ButtonStyle.Secondary)
           .setDisabled(true)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:handeled")
           .setLabel("Handeled Subjects")
-          .setStyle("PRIMARY")
+          .setStyle(ButtonStyle.Primary)
       )
       .addComponents(
-        new MessageButton()
+        new ButtonBuilder()
           .setCustomId("dp:technical")
           .setLabel("Technical Specs")
-          .setStyle("PRIMARY")
+          .setStyle(ButtonStyle.Primary)
       );
 
     interaction.update({
       embeds: [embed],
       components: [row1, row2, row3, row4],
     });
-
   },
 };

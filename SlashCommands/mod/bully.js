@@ -1,4 +1,10 @@
-const { MessageActionRow, MessageEmbed, MessageButton } = require("discord.js");
+const {
+  ActionRowBuilder,
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ApplicationCommandOptionType,
+} = require("discord.js");
 
 const ms = require("ms");
 
@@ -9,7 +15,7 @@ module.exports = {
     {
       name: "user",
       description: "Person whom you want to bully",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: true,
     },
   ],

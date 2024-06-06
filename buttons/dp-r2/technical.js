@@ -1,32 +1,41 @@
 module.exports = {
   id: "dp:technical",
   run: (client, interaction) => {
-    const { MessageEmbed , MessageActionRow , MessageButton } = require("discord.js");
-    const embed = new MessageEmbed()
-      .setColor("BLUE")
+    const {
+      EmbedBuilder,
+      ActionRowBuilder,
+      ButtonBuilder,
+      ButtonStyle,
+    } = require("discord.js");
+    const embed = new EmbedBuilder()
+      .setColor("Blue")
       .setTitle("Technical Information")
-      .addField("OS", process.platform, true)
-      .addField("CPU", process.arch, true)
-      .addField("Node.js", process.version, true)
-      .addField("Discord.js", require("discord.js").version, true)
+      .addFields(
+        { name: "OS", value: process.platform, inline: true },
+        { name: "CPU", value: process.arch, inline: true },
+        { name: "Node.js", value: process.version, inline: true },
+        {
+          name: "Discord.js",
+          value: require("discord.js").version,
+          inline: true,
+        }
+      )
       .setTimestamp();
 
-      const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-            .setCustomId("dp:shutdown")
-            .setLabel("Shutdown")
-            .setStyle("PRIMARY")
-        );
-  
-      const back = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-            .setCustomId("dp:back")
-            .setLabel("Back")
-            .setStyle("DANGER")
-        );
-        
-      interaction.update({ embeds: [embed], components: [row, back] });
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("dp:shutdown")
+        .setLabel("Shutdown")
+        .setStyle(ButtonStyle.Primary)
+    );
+
+    const back = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("dp:back")
+        .setLabel("Back")
+        .setStyle(ButtonStyle.Danger)
+    );
+
+    interaction.update({ embeds: [embed], components: [row, back] });
   },
 };

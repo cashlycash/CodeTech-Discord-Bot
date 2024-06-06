@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { readdirSync } = require("fs");
 
 module.exports = {
@@ -37,16 +37,17 @@ module.exports = {
         categories.push(data);
       });
 
-      const embed = new MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle("📬 Need help? Here are all of my commands:")
         .addFields(categories)
         .setDescription(
-          `Use \`${prefix}help\` followed by a command name to get more additional information on a command. For example: \`${prefix}help ping\``
+          `Use \`${prefix}help\` followed by a command name to get more additional information on a command. For example: \`${prefix}
+          help ping\``
         )
-        .setFooter(
-          `Requested by ${message.author.username}`,
-          message.author.displayAvatarURL({ dynamic: true })
-        )
+        .setFooter({
+          text: `Requested by ${message.author.username}`,
+          iconURL: message.author.displayAvatarURL({ dynamic: true }),
+        })
         .setTimestamp()
         .setURL(client.config.randomlink)
         .setColor("#FF0000");
@@ -61,7 +62,7 @@ module.exports = {
         );
 
       if (!command) {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
           .setTitle(
             `Invalid command! Use \`${prefix}help\` for all of my commands!`
           )
@@ -69,38 +70,42 @@ module.exports = {
         return message.channel.send(embed);
       }
 
-      const embed = new MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle("Command Details:")
-        .addField(
-          "COMMAND:",
-          command.name ? `\`${command.name}\`` : "No name for this command.",
-          true
+        .addFields(
+          {
+            name: "COMMAND:",
+            value: command.name
+              ? `\`${command.name}\``
+              : "No name for this command.",
+            inline: true,
+          },
+          {
+            name: "ALIASES:",
+            value: command.aliases
+              ? `\`${command.aliases.join("` `")}\``
+              : "`No aliases for this command.`",
+            inline: true,
+          },
+          {
+            name: "USAGE:",
+            value: command.usage
+              ? `\`${prefix}${command.name} ${command.usage}\``
+              : `\`${prefix}${command.name}\``,
+            inline: false,
+          },
+          {
+            name: "DESCRIPTION:",
+            value: command.description
+              ? `\`${command.description}\``
+              : "`No description for this command.`",
+            inline: true,
+          }
         )
-        .addField(
-          "ALIASES:",
-          command.aliases
-            ? `\`${command.aliases.join("` `")}\``
-            : "`No aliases for this command.`",
-          true
-        )
-        .addField(
-          "USAGE:",
-          command.usage
-            ? `\`${prefix}${command.name} ${command.usage}\``
-            : `\`${prefix}${command.name}\``,
-          false
-        )
-        .addField(
-          "DESCRIPTION:",
-          command.description
-            ? `\`${command.description}\``
-            : "`No description for this command.`",
-          true
-        )
-        .setFooter(
-          `Requested by ${message.author.username}`,
-          message.author.displayAvatarURL({ dynamic: true })
-        )
+        .setFooter({
+          text: `Requested by ${message.author.username}`,
+          iconURL: message.author.displayAvatarURL({ dynamic: true }),
+        })
         .setTimestamp()
         .setURL(client.config.randomlink)
         .setColor("00FF00");

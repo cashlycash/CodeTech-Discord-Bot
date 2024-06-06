@@ -21,6 +21,7 @@ module.exports = async (client) => {
       .get(client.config.server)
       .commands.set(arrayOfSlashCommands)
       .catch((e) => {
+        console.log(e);
         return;
       });
   });
@@ -60,5 +61,4 @@ module.exports = async (client) => {
       client.btns.get(interaction.customId)?.run(client, interaction);
     }
   });
-  
 };

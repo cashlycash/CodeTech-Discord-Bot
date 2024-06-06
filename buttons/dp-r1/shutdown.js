@@ -3,23 +3,32 @@ module.exports = {
   run: (client, interaction) => {
     var owners = client.config.botadmins;
     if (!owners.includes(interaction.member.user.id)) {
-      return interaction.reply({ content: "Limited To The Bot Admins Only!" , ephemeral: true });
+      return interaction.reply({
+        content: "Limited To The Bot Admins Only!",
+        ephemeral: true,
+      });
     }
-    const { MessageEmbed , MessageActionRow , MessageButton } = require("discord.js");
+    const {
+      EmbedBuilder,
+      ActionRowBuilder,
+      ButtonBuilder,
+      ButtonStyle,
+    } = require("discord.js");
 
-    const embed = new MessageEmbed()
-      .setColor("BLUE")
-      .setTitle("Shutting down the bot...")
+    const embed = new EmbedBuilder()
+      .setColor("Blue")
+      .setTitle("Shutting down the bot...");
 
-    interaction.reply({ embeds: [embed], ephemeral: true })
+    interaction.reply({ embeds: [embed], ephemeral: true });
 
-    
     const dat = {
-      activities: [{
-        name: "Shutting down...",
-        type: "PLAYING",
-      }],
-      status: 'dnd',
+      activities: [
+        {
+          name: "Shutting down...",
+          type: "PLAYING",
+        },
+      ],
+      status: "dnd",
     };
     client.user.setPresence(dat);
 
