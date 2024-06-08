@@ -104,6 +104,23 @@ client.on(
     if (interaction.isButton()) {
       const sid = interaction.customId.toString().split(":");
       const id = interaction.customId.toString();
+      if (sid[0] == "br") {
+        var roleid = sid[1];
+        var member = interaction.guild.members.cache.get(interaction.user.id);
+        if (member.roles.cache.get(roleid)) {
+          member.roles.remove(roleid);
+          interaction.reply({
+            content: `Removed the role! <@&${roleid}>`,
+            ephemeral: true,
+          });
+        } else {
+          member.roles.add(roleid);
+          interaction.reply({
+            content: `Added the role! <@&${roleid}>`,
+            ephemeral: true,
+          });
+        }
+      }
       if (id == "ping_reload") {
         interaction.update(ping(interaction));
       }

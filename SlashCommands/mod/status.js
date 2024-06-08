@@ -53,12 +53,8 @@ module.exports = {
       required: false,
     },
   ],
+  default_member_permissions: PermissionFlagsBits.ManageGuild.toString(),
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-      return interaction.followUp(
-        "You need `[MANAGE_GUILD]` permission to use this command"
-      );
-    }
     const type = interaction.options.get("type").value;
     const name = interaction.options.getString("name");
     const icon = interaction.options.get("icon")

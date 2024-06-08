@@ -20,9 +20,10 @@ client.on("messageCreate", async (message) => {
   if (message.content.indexOf(prefix) !== 0) return;
   if (cmd) {
     if (!message.member.permissions.has(cmd.UserPerms || [])) {
-      return message.channel.send(
-        `You need \`${cmd.UserPerms || []}\` Permissions`
+      var permW = Object.keys(PermissionFlagsBits).find(
+        (key) => PermissionFlagsBits[key] == cmd.UserPerms[0]
       );
+      return message.channel.send(`You need \`[${permW}]\` Permissions`);
     } else {
       cmd.run(client, message, args, prefix);
     }

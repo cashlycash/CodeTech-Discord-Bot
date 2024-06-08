@@ -1,16 +1,17 @@
 {
   "prefix": "!",
-  "botadmins": [
-    "userid",
-    "userid"
-  ],
+  "botadmins": ["userid", "userid"],
+  "bullyprotection": {
+    "userid": {
+      "_name": "name of person (just for easy editing. dosnt effect any part of the result)",
+      "time": "time in ms format (10m, 12s, 24h, 12d)",
+      "comment": "the comment you want for that person"
+    }
+  },
   "rainbowrole": {
     "enabled": "false",
     "role": "Role id to change color of every min. Make sure the enabled is value is set to true",
-    "colors": [
-      "hex code of a color",
-      "hex code of a color"
-    ]
+    "colors": ["hex code of a color", "hex code of a color"]
   },
   "randomlink": "A random link that will be used in embed titles",
   "verify": {

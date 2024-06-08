@@ -1,3 +1,4 @@
+const { PermissionFlagsBits } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -5,7 +6,7 @@ module.exports = {
   aliases: ["gol", "roulette", "grr", "god"],
   description: "Play russian roulette where the unlucky one gets muted",
   usage: "[time] <@user> <@user> ...",
-  UserPerms: ["ADMINISTRATOR"],
+  UserPerms: [PermissionFlagsBits.Administrator],
   run: async (client, message, args) => {
     var pps = message.mentions.members;
     var pps = pps.toJSON();

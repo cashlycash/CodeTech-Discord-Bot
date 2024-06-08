@@ -20,17 +20,19 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    const whitelist = client.config.botadmins;
-
     const user = interaction.options.getMember("user");
 
+    var whiteobject = client.config.bullyprotection;
+    var whitelist = Object.keys(whiteobject);
+
     if (user.id == client.user.id || whitelist.includes(user.id)) {
+      const botbeing = user.id == client.user.id;
       const check = client.ctbully.includes(interaction.user.id);
       if (check) {
         client.ctbully.splice(client.ctbully.indexOf(interaction.user.id), 1);
         try {
           await interaction.member.timeout(
-            ms("5m"),
+            botbeing ? ms("5m") : ms(whiteobject[user.id].time),
             "Trying to bully bot or bot admin"
           );
         } catch {
@@ -38,7 +40,10 @@ module.exports = {
             "I do not have permissions to punish you. I am sorry."
           );
         }
-        return interaction.followUp("I warned you! Enjoy the mute.");
+        return interaction.followUp(
+          (botbeing ? "I warned you!" : whiteobject[user.id].comment) +
+            " Enjoy the mute."
+        );
       }
 
       client.ctbully.push(interaction.user.id);

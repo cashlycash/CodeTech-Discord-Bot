@@ -1,11 +1,16 @@
-const { Client, Message, EmbedBuilder } = require("discord.js");
+const {
+  Client,
+  Message,
+  EmbedBuilder,
+  PermissionFlagsBits,
+} = require("discord.js");
 
 module.exports = {
   name: "steal",
   aliases: ["addemoji"],
   description: "Steal emoji from another server",
   usage: "<emoji> <name>",
-  UserPerms: ["MANAGE_EMOJIS_AND_STICKERS"],
+  UserPerms: [PermissionFlagsBits.ManageGuildExpressions],
   run: async (client, message, args, Discord) => {
     if (args.length == 0) {
       return message.reply(

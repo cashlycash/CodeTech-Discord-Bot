@@ -5,6 +5,7 @@ const {
   ActionRowBuilder,
   PermissionFlagsBits,
   ApplicationCommandOptionType,
+  SlashCommandBuilder,
 } = require("discord.js");
 const ms = require("ms");
 
@@ -33,13 +34,8 @@ module.exports = {
       required: true,
     },
   ],
+  default_member_permissions: PermissionFlagsBits.ManageGuild.toString(),
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-      return interaction.followUp(
-        "You need `[MANAGE_GUILD]` permission to use this command"
-      );
-    }
-
     const u = interaction.options.getMember("user");
     const r = interaction.options.getString("reason");
     let timeAdded = interaction.options.getString("time");

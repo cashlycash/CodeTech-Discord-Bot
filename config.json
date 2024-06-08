@@ -1,6 +1,18 @@
 {
   "prefix": "!",
   "botadmins": ["864709393362059274"],
+  "bullyprotection": {
+    "1216320554404155393": {
+      "_name": "Krish",
+      "time": "10m",
+      "comment": "Dikh gayi apni aukaat?"
+    },
+    "864709393362059274": {
+      "_name": "Arnav",
+      "time": "4h",
+      "comment": "Bro did not try to mute the bot owner."
+    }
+  },
   "rainbowrole": {
     "enabled": "false",
     "role": "1107551391607705722",

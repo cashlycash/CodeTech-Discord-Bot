@@ -19,15 +19,8 @@ module.exports = {
       required: true,
     },
   ],
+  default_member_permissions: PermissionFlagsBits.ManageMessages.toString(),
   run: async (client, interaction) => {
-    if (
-      !interaction.member.permissions.has(PermissionFlagsBits.ManageMessages)
-    ) {
-      return interaction.followUp(
-        "You need `[MANAGE_MESSAGES]` permission to use this command"
-      );
-    }
-
     const inp = await interaction.options.getString("number", true);
     if (!inp) {
       interaction.followUp("Please provide a number or type infinity");
