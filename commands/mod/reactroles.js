@@ -619,9 +619,9 @@ module.exports = {
           .setTitle(panel.name)
           .setDescription(panel.desc)
           .setColor("Blurple");
-        var instructionembed = new EmbedBuilder().setDescription({
-          text: `Use the buttons to below Add or Remove (toggle) the roles linked to them.`,
-        });
+        var instructionembed = new EmbedBuilder().setDescription(
+          `Use the buttons to below Add or Remove (toggle) the roles linked to them.`
+        );
         var buttons = panel.buttons;
         var rows = [];
         for (let i = 0; i < Math.ceil(buttons.length / 5); i++) {

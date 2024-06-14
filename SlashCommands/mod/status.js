@@ -3,7 +3,14 @@ const {
   PermissionFlagsBits,
 } = require("discord.js");
 
-const types = [`PLAYING`, `STREAMING`, "LISTENING", "WATCHING", "COMPETING"];
+const types = [
+  `PLAYING`,
+  `STREAMING`,
+  "LISTENING",
+  "WATCHING",
+  "COMPETING",
+  "CUSTOM",
+];
 
 const icons = ["online", "idle", "offline", "dnd"];
 
