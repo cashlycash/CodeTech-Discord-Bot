@@ -1,20 +1,19 @@
 const {
   ApplicationCommandOptionType,
   PermissionFlagsBits,
+  ActivityType,
 } = require("discord.js");
 
-const types = [
-  `PLAYING`,
-  `STREAMING`,
-  "LISTENING",
-  "WATCHING",
-  "COMPETING",
-  "CUSTOM",
-];
+const types = {
+  PLAYING: ActivityType.Playing,
+  STREAMING: ActivityType.Streaming,
+  LISTENING: ActivityType.Listening,
+  WATCHING: ActivityType.Watching,
+  COMPETING: ActivityType.Competing,
+  CUSTOM: ActivityType.Custom,
+};
 
 const icons = ["online", "idle", "offline", "dnd"];
-
-const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
   ephemeral: true,
@@ -25,10 +24,10 @@ module.exports = {
       type: ApplicationCommandOptionType.String,
       name: "type",
       description: "Status type",
-      choices: types.map((type) => {
+      choices: Object.keys(types).map((type) => {
         return {
           name: type,
-          value: type,
+          value: types[type].toString(),
         };
       }),
       required: true,
@@ -62,7 +61,8 @@ module.exports = {
   ],
   default_member_permissions: PermissionFlagsBits.ManageGuild.toString(),
   run: async (client, interaction) => {
-    const type = interaction.options.get("type").value;
+    var db = client.db;
+    const type = parseInt(interaction.options.get("type").value);
     const name = interaction.options.getString("name");
     const icon = interaction.options.get("icon")
       ? interaction.options.get("icon").value

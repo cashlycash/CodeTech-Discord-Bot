@@ -1,9 +1,9 @@
-const db = require(process.cwd() + "/database.js").db;
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   id: "vote:end",
   run: async (client, interaction) => {
+    var db = client.db;
     const vp = `${interaction.message.id}:vote:owner`;
     const owner = await db.get(vp);
     if (owner != interaction.user.id) {

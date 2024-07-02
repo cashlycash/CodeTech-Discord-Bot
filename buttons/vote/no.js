@@ -1,8 +1,7 @@
-const db = require(process.cwd() + "/database.js").db;
-
 module.exports = {
   id: "vote:no",
   run: async (client, interaction) => {
+    var db = client.db;
     const vp = `${interaction.message.id}:${interaction.user.id}:vote`;
     var n = null;
     if ((await db.get(vp)) == "no") {

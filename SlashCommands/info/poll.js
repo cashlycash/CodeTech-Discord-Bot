@@ -5,7 +5,6 @@ const {
   ButtonStyle,
   ApplicationCommandOptionType,
 } = require("discord.js");
-const db = require(process.cwd() + "/database.js").db;
 
 module.exports = {
   name: "poll",
@@ -19,6 +18,7 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    var db = client.db;
     const cont = interaction.options.getString("content");
     const emb = new EmbedBuilder()
       .setTitle("Poll")

@@ -4,20 +4,18 @@ const { MongoDriver } = require("quickmongo");
 if (!process.env.mongodb) {
   throw "No MongoDB url defined";
 }
-console.log(`[📂] MongoDB URL: ${process.env.mongodb}`);
 
-var db;
+class database {
+  constructor() {
+    console.log(`[📂] MongoDB URL: ${process.env.mongodb}`);
+    this.driver = new MongoDriver(process.env.mongodb);
+  }
+  async initalise() {
+    await this.driver.connect();
+    console.log(`[📂] Connected to the database!`);
+    this.db = new QuickDB({ driver: this.driver });
+    return this.db;
+  }
+}
 
-var initalise = async () => {
-  const driver = new MongoDriver(process.env.mongodb);
-  await driver.connect();
-  console.log(`[📂] Connected to the database!`);
-  db = new QuickDB({ driver });
-
-  return db;
-};
-
-module.exports = {
-  db,
-  initalise,
-};
+module.exports = new database();

@@ -3,6 +3,7 @@ const client = require("../index.js");
 client.on("ready", async (msg) => {
   await require("../web")(client);
   const db = await require(process.cwd() + "/database.js").initalise();
+  client.db = db;
 
   console.log(`[🤖] Active as ${client.user.tag}`);
   console.log(`[--------------${"-".repeat(client.user.tag.length)}]`);
