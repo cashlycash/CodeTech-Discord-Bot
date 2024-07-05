@@ -197,7 +197,6 @@ module.exports = {
     rolecol.on(`collect`, async (roleint) => {
       if (roleint.isButton()) {
         if (roleint.customId == `rss-submit`) {
-          console.log(`rss-submit`);
           var channelmenu = new ActionRowBuilder().setComponents(
             new ChannelSelectMenuBuilder()
               .setCustomId(`channelmenu`)

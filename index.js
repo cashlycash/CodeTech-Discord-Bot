@@ -37,6 +37,10 @@ const client = new Client({
   ],
 });
 
+if (!process.env.token) {
+  throw "No bot token defined";
+}
+
 process.on("unhandledRejection", (error) => {
   console.log(error);
 });
@@ -60,10 +64,6 @@ client.config = require("./config.json");
 require("./handler")(client);
 
 module.exports = client;
-
-if (!process.env.token) {
-  throw "No bot token defined";
-}
 console.log(`[-----------${"-".repeat(process.env.token.length)}-]`);
 console.log(`[🤖] Token: \"${process.env.token}\"`);
 client.login(process.env.token);
