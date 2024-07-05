@@ -21,7 +21,7 @@ module.exports = {
     const focusActivity = activities.find((x) => x.assets);
     const embed = new EmbedBuilder()
       .setAuthor({
-        name: member.user.username,
+        name: member.user.username.toString(),
         iconURL: member.user.displayAvatarURL(),
       })
       .setColor(
@@ -42,7 +42,7 @@ module.exports = {
                 x.details || "None"
               } : ${x.state || "None"}\``
           )
-          .join("\n")
+          .join("\n") || "`No Activities`"
       )
       .addFields(
         {
