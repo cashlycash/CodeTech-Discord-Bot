@@ -59,9 +59,7 @@ client.on(
         }
 
         await client.config.verify.roles.forEach(async (r) => {
-          (
-            await interaction.guild.members.fetch(interaction.member.user.id)
-          ).roles.add(r);
+          interaction.member.user.id.roles.add(r);
         });
 
         interaction.member.setNickname(`${name} | ${clas}-${sec}`);
